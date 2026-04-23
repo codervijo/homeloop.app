@@ -1,3 +1,6 @@
+# Lovable scaffold (migrated to root)
+genai/
+
 # Node
 node_modules/
 dist/
