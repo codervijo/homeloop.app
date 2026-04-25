@@ -7,6 +7,14 @@
     <title>Homeloop — The OS for homeschool families</title>
     <meta name="description" content="Homeloop helps homeschool families file compliance, plan daily school, and generate transcripts — all in one calm system." />
     <meta name="author" content="Homeloop" />
+    <!-- GA4: set VITE_GA_ID in Vercel env vars -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_ID%"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '%VITE_GA_ID%');
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

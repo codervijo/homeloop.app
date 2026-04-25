@@ -8,15 +8,54 @@
 - [x] Transcript generation (PDF export)
 
 ## Phase 2 — Launch & Discoverability
-- [ ] Publish site on homeloop.app domain
+
+### 2a — Hosting & Deployment
+- [ ] Publish site on homeloop.app domain via Vercel
+- [ ] Set up GitHub repo and connect to Vercel for CI/CD
+- [x] `vercel.json` — build config, cache headers, SPA redirect rule
+- [x] `.vercelignore` — exclude `genai/`, `docs/`, `src/test/`
+
+### 2b — Analytics (day-one priority — need data from launch)
+- [x] `src/analytics/ga.ts` — GA4 event helper module
+- [x] `VITE_GA_ID` env var; gtag script injected in `index.html`
+- [x] Custom events: `task_added`, `task_completed`, `transcript_exported`, `compliance_viewed`, `child_viewed`
+- [x] Dev-mode: log GA events to console instead of sending
+- [ ] Wire `trackTask*` calls into Dashboard.jsx and ChildView.jsx
+- [ ] Wire `trackTranscriptExported` into Transcript.jsx
+- [ ] Wire `trackComplianceViewed` into Compliance.jsx
+- [ ] Add `VITE_GA_ID` to Vercel environment variables
+
+### 2c — SEO & Crawlability
 - [ ] Submit to Google Search Console (GSC)
-- [ ] Add Google Analytics (GA4) tracking
-- [ ] Crawlability improvements
-  - [ ] `robots.txt` tuned for indexing
-  - [ ] `sitemap.xml` generated and submitted to GSC
-  - [ ] `<meta>` tags: title, description, og:image per page
-  - [ ] Canonical URLs
-  - [ ] Structured data (JSON-LD) on landing page
-- [ ] SEO check and improvement scripts
-  - [ ] Lighthouse CI script (automated audit on build)
-  - [ ] `pnpm seo` script: checks meta tags, sitemap, robots.txt, canonical URLs
+- [ ] `robots.txt` — allow all public routes, disallow `/dashboard`, `/child/*`, `/transcript`
+- [ ] `sitemap.xml` — landing + public pages only; submit to GSC
+- [ ] Canonical URL `<link>` on all pages
+- [ ] JSON-LD on landing page: `WebApplication`, `Organization`, `WebSite` with `SearchAction`, `FAQPage`
+- [ ] Real `public/og-image.png` (1200×630) to replace current placeholder
+- [ ] `public/llms.txt` — AI agent discoverability (pattern from civictools.app)
+
+### 2d — Legal Pages
+- [ ] `/privacy` — Privacy Policy page
+- [ ] `/terms` — Terms of Service page
+- [ ] `/about` — About / credibility page
+- [ ] Footer component with links to all three
+
+### 2e — SEO Audit & Testing
+- [ ] `pnpm test:seo` — vitest suite: checks meta tags, canonical, OG, JSON-LD presence (pattern from civictools)
+- [ ] `pnpm test:seo:build` — same but forces a fresh build first
+- [ ] Lighthouse CI script: automated perf/SEO audit on every build
+
+## Phase 3 — Data Persistence & Auth
+- [ ] Replace localStorage with a real backend (Supabase or Go+SQLite)
+- [ ] Parent auth (login / signup)
+- [ ] Per-family data isolation
+- [ ] Data export (JSON backup / restore)
+
+## Phase 4 — Product Depth
+- [ ] Curriculum planning view (weekly/monthly schedule builder)
+- [ ] Resource library (attach materials to tasks)
+- [ ] Multi-child subject hour tracking (auto-accumulates into transcript)
+- [ ] Compliance report export per state (CA, TX, FL templates)
+- [ ] State-specific homeschool requirement lookup (SEO pages, civictools pattern)
+- [ ] `Disclaimer` component on compliance + transcript pages (legal coverage)
+- [ ] PWA / installable on mobile (service worker + manifest)

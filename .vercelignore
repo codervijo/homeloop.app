@@ -1,0 +1,8 @@
+# Project docs — not needed for build or deploy
+docs/
+AI_AGENT.md
+genai/
+
+# Dev tooling
+.claude/
+src/test/
