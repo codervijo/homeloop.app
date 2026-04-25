@@ -10,10 +10,12 @@
 ## Phase 2 — Launch & Discoverability
 
 ### 2a — Hosting & Deployment
-- [ ] Publish site on homeloop.app domain via Vercel
-- [ ] Set up GitHub repo and connect to Vercel for CI/CD
-- [x] `vercel.json` — build config, cache headers, SPA redirect rule
-- [x] `.vercelignore` — exclude `genai/`, `docs/`, `src/test/`
+- [ ] Publish site on homeloop.app domain via Cloudflare Workers (Static Assets)
+- [ ] Connect GitHub repo to Cloudflare Workers Builds for CI/CD
+- [x] `wrangler.jsonc` — Workers Static Assets config with SPA fallback (`not_found_handling: single-page-application`)
+- [x] `public/_headers` — cache + security headers (immutable for `/assets/*`, no-cache for HTML, security headers site-wide)
+- [x] Build: `pnpm build` → `dist/` served by Workers Static Assets
+- [x] Vite ≥ 6 (required by Wrangler's Vite integration)
 
 ### 2b — Analytics (day-one priority — need data from launch)
 - [x] `src/analytics/ga.ts` — GA4 event helper module
@@ -23,7 +25,7 @@
 - [ ] Wire `trackTask*` calls into Dashboard.jsx and ChildView.jsx
 - [ ] Wire `trackTranscriptExported` into Transcript.jsx
 - [ ] Wire `trackComplianceViewed` into Compliance.jsx
-- [ ] Add `VITE_GA_ID` to Vercel environment variables
+- [ ] Add `VITE_GA_ID` to Cloudflare environment variables (Workers project settings)
 
 ### 2c — SEO & Crawlability
 - [ ] Submit to Google Search Console (GSC)

@@ -58,5 +58,15 @@ make run proj=homeloop.app
 - MUI is the primary component system; shadcn/ui components live in `src/components/ui/`
 - jsPDF is used for transcript PDF generation
 
+## Deployment
+- **Platform:** Cloudflare Workers (Static Assets) — *not* Vercel
+- **Config:** `wrangler.jsonc` at the repo root — points `assets.directory` at `./dist` and uses `not_found_handling: "single-page-application"` for SPA client-side routing
+- **Headers:** `public/_headers` — cache (`/assets/*` immutable, HTML no-cache) + security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`). Vite copies `public/` into `dist/` at build, so the file ships with the assets.
+- **Build:** `pnpm build` → `dist/`. Wrangler picks up `dist/` via `wrangler.jsonc`.
+- **Deploy:** `wrangler deploy` (locally) or via Cloudflare's Git integration on push.
+- **Vite version:** must be ≥ 6.0.0 — Wrangler's Vite integration rejects Vite 5.
+- **Env vars:** set `VITE_GA_ID` (and any other `VITE_*` vars) in the Cloudflare Workers project's environment-variable settings — they're inlined at build time.
+- **Legacy:** `vercel.json` and `.vercelignore` may still be present from the earlier Vercel plan; they're inert on Cloudflare and can be deleted.
+
 ## Out of scope / don't touch
 - <!-- leave blank for user to fill -->
