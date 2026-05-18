@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const SITE_URL = "https://homeloop.app";
+const SITE_URL = "https://homeloom.app";
 
 export function usePageMeta({
   title,

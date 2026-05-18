@@ -1,4 +1,4 @@
-# AI Agent Context — homeloop.app
+# AI Agent Context — homeloom.app
 
 ## What this project is
 A homeschool management web app for parents to track daily tasks, children's progress, compliance records, and generate transcripts.
@@ -16,7 +16,7 @@ A homeschool management web app for parents to track daily tasks, children's pro
 
 ## Project structure
 ```
-homeloop.app/
+homeloom.app/
   src/
     pages/            # Route-level page components
     components/       # Shared UI components (Layout, NavLink, shadcn/ui)
@@ -34,7 +34,7 @@ All commands run inside the Docker container. From the `sites/` parent directory
 ```bash
 make buildsh                      # enter the container
 # then inside the container:
-cd homeloop.app && pnpm install   # install deps (generates pnpm-lock.yaml)
+cd homeloom.app && pnpm install   # install deps (generates pnpm-lock.yaml)
 pnpm dev                          # start Vite dev server on :5173
 pnpm build                        # production build
 pnpm test                         # run Vitest tests
@@ -42,15 +42,15 @@ pnpm test                         # run Vitest tests
 
 Or use the Makefile shortcut (installs + starts dev server):
 ```bash
-make run proj=homeloop.app
+make run proj=homeloom.app
 ```
 
 ## Dev environment
 - **Package manager:** pnpm (managed by Volta inside Docker — never use npm or bun)
 - **Container:** Debian-based Docker image defined at `../Dockerfile` (parent `sites/` dir)
-- **Mount:** The container mounts the entire `sites/` directory to `/usr/src/app/`, so this project is at `/usr/src/app/homeloop.app/` inside the container
+- **Mount:** The container mounts the entire `sites/` directory to `/usr/src/app/`, so this project is at `/usr/src/app/homeloom.app/` inside the container
 - **Entry:** `make buildsh` from `sites/` builds and enters the container interactively
-- **Makefile shortcut:** `make run proj=homeloop.app` runs install + dev server in one step
+- **Makefile shortcut:** `make run proj=homeloom.app` runs install + dev server in one step
 
 ## Key conventions
 - Pages live in `src/pages/`, mixed JSX and TSX files

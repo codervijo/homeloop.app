@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
-const STORAGE_KEY = "homeloop_state_v1";
+const STORAGE_KEY = "homeloom_state_v1";
 
 const seed = {
   parent: { name: "Alex Parent", address: "" },

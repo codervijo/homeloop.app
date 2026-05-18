@@ -4,4 +4,4 @@ Disallow: /dashboard
 Disallow: /child/
 Disallow: /transcript
 
-Sitemap: https://homeloop.app/sitemap.xml
+Sitemap: https://homeloom.app/sitemap.xml

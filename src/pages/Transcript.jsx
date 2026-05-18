@@ -38,7 +38,7 @@ export default function Transcript() {
     doc.setFontSize(20);
     doc.text("Official Homeschool Transcript", 20, 22);
     doc.setFontSize(10);
-    doc.text("Issued by Homeloop Family Academy", 20, 30);
+    doc.text("Issued by Homeloom Family Academy", 20, 30);
     doc.line(20, 34, 190, 34);
 
     doc.setFontSize(11);

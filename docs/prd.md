@@ -1,4 +1,4 @@
-# PRD — homeloop.app
+# PRD — homeloom.app
 
 ## Phase 1 — Core Homeschool Management ✓
 - [x] Parent dashboard with daily task tracking
@@ -10,7 +10,7 @@
 ## Phase 2 — Launch & Discoverability
 
 ### 2a — Hosting & Deployment
-- [ ] Publish site on homeloop.app domain via Cloudflare Workers (Static Assets)
+- [ ] Publish site on homeloom.app domain via Cloudflare Workers (Static Assets)
 - [ ] Connect GitHub repo to Cloudflare Workers Builds for CI/CD
 - [x] `wrangler.jsonc` — Workers Static Assets config with SPA fallback (`not_found_handling: single-page-application`)
 - [x] `public/_headers` — cache + security headers (immutable for `/assets/*`, no-cache for HTML, security headers site-wide)

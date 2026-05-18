@@ -23,7 +23,7 @@ export default function Layout({ children }) {
               <Box sx={{ width: 32, height: 32, borderRadius: 2, bgcolor: "primary.main", display: "grid", placeItems: "center", color: "#fff" }}>
                 <HomeRoundedIcon fontSize="small" />
               </Box>
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>Homeloop</Typography>
+              <Typography variant="h6" sx={{ fontWeight: 700 }}>Homeloom</Typography>
             </Stack>
 
             <Stack direction="row" spacing={1} sx={{ display: { xs: "none", md: "flex" } }}>
@@ -63,7 +63,7 @@ export default function Layout({ children }) {
       <Box component="main">{children}</Box>
 
       <Box component="footer" sx={{ py: 4, mt: 8, borderTop: "1px solid #eef1f6", textAlign: "center" }}>
-        <Typography variant="body2" color="text.secondary">© {new Date().getFullYear()} Homeloop · The operating system for homeschool families</Typography>
+        <Typography variant="body2" color="text.secondary">© {new Date().getFullYear()} Homeloom · The operating system for homeschool families</Typography>
       </Box>
     </Box>
   );

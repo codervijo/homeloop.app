@@ -62,7 +62,7 @@ export default function Landing() {
           <Box sx={{ textAlign: "center", mb: 6 }}>
             <Typography variant="overline" color="primary">The solution</Typography>
             <Typography variant="h3" sx={{ fontSize: { xs: "1.75rem", md: "2.25rem" }, mt: 1 }}>
-              Homeloop simplifies everything into one system.
+              Homeloom simplifies everything into one system.
             </Typography>
           </Box>
           <Grid container spacing={3}>
@@ -89,7 +89,7 @@ export default function Landing() {
           Ready for a calmer school year?
         </Typography>
         <Typography color="text.secondary" sx={{ mb: 4 }}>
-          Join families using Homeloop to file, plan, and track — without the chaos.
+          Join families using Homeloom to file, plan, and track — without the chaos.
         </Typography>
         <Button component={Link} to="/dashboard" variant="contained" size="large">Start Free</Button>
       </Container>
