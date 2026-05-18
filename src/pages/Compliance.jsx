@@ -1,7 +1,8 @@
 import { Container, Typography, Grid, Card, CardContent, TextField, Button, Stack, Box, MenuItem, Autocomplete, Divider } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import { useStore } from "../store";
+import { trackComplianceViewed } from "../analytics/ga";
 
 const grades = ["K", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th"];
 const schoolSuggestions = [
@@ -19,6 +20,10 @@ export default function Compliance() {
     schoolName: "Private School Affidavit School",
   });
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    trackComplianceViewed();
+  }, []);
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   const setStudent = (i, k, v) =>

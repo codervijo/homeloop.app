@@ -6,9 +6,15 @@ import LocalFireDepartmentRoundedIcon from "@mui/icons-material/LocalFireDepartm
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useStore } from "../store";
+import { trackTaskAdded, trackTaskCompleted } from "../analytics/ga";
 
 export default function Dashboard() {
   const { state, addTask, toggleTask, removeTask } = useStore();
+
+  const handleToggle = (task) => {
+    if (!task.completed) trackTaskCompleted(task.subject, task.childId);
+    toggleTask(task.id);
+  };
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ title: "", childId: state.children[0]?.id || "", subject: "Math", minutes: 30 });
 
@@ -40,6 +46,7 @@ export default function Dashboard() {
   const handleAdd = () => {
     if (!form.title.trim() || !form.childId) return;
     addTask({ ...form, minutes: Number(form.minutes) || 30 });
+    trackTaskAdded(form.subject);
     setForm({ title: "", childId: state.children[0]?.id || "", subject: "Math", minutes: 30 });
     setOpen(false);
   };
@@ -68,7 +75,7 @@ export default function Dashboard() {
                   const child = state.children.find((c) => c.id === t.childId);
                   return (
                     <Stack key={t.id} direction="row" alignItems="center" spacing={1.5} sx={{ p: 1.5, border: "1px solid #eef1f6", borderRadius: 2 }}>
-                      <IconButton onClick={() => toggleTask(t.id)} size="small">
+                      <IconButton onClick={() => handleToggle(t)} size="small">
                         {t.completed ? <CheckCircleRoundedIcon color="primary" /> : <RadioButtonUncheckedIcon />}
                       </IconButton>
                       <Box sx={{ flexGrow: 1 }}>

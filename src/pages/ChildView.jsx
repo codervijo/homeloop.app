@@ -2,13 +2,24 @@ import { Container, Typography, Box, Stack, Button, Card, CardContent, LinearPro
 import LocalFireDepartmentRoundedIcon from "@mui/icons-material/LocalFireDepartmentRounded";
 import EmojiEventsRoundedIcon from "@mui/icons-material/EmojiEventsRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useStore } from "../store";
+import { trackChildViewed, trackTaskCompleted } from "../analytics/ga";
 
 export default function ChildView() {
   const { id } = useParams();
   const { state, toggleTask } = useStore();
   const child = state.children.find((c) => c.id === id);
+
+  useEffect(() => {
+    if (id) trackChildViewed(id);
+  }, [id]);
+
+  const handleToggle = (task) => {
+    if (!task.completed) trackTaskCompleted(task.subject, task.childId);
+    toggleTask(task.id);
+  };
   const today = new Date().toISOString().slice(0, 10);
   const tasks = state.tasks.filter((t) => t.childId === id && t.date === today);
   const done = tasks.filter((t) => t.completed).length;
@@ -71,7 +82,7 @@ export default function ChildView() {
         {tasks.map((t) => (
           <Card
             key={t.id}
-            onClick={() => toggleTask(t.id)}
+            onClick={() => handleToggle(t)}
             sx={{
               cursor: "pointer",
               transition: "all .2s",
