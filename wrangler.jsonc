@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "homeloom-app",
+  "name": "homeloop",
   "compatibility_date": "2026-04-24",
   "assets": {
     "directory": "./dist",
